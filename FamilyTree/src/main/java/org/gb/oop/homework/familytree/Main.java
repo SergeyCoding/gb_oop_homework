@@ -49,7 +49,7 @@ public class Main {
     public static final int RootPersonCount = 2;
 
     public static void main(String[] args) {
-        System.out.println("Генеалогическо0е древо");
+        System.out.println("Генеалогическое древо");
 
         List<Person> rootPeople = new ArrayList<>();
 
@@ -74,16 +74,27 @@ public class Main {
             System.out.printf("Текущий член сообщества: %s\n", society.getActivePerson().getName());
             System.out.println("1. Вывести всех членов сообщества");
             System.out.println("2. Выбрать члена сообщества");
-            System.out.println("3. Пирамидальная сортировка");
-            System.out.println("4. 8 ферзей");
+            System.out.println("3. Вывести родителей");
+            System.out.println("4. Вывести детей");
+            System.out.println("5. Вывести братьев и сестер");
+            System.out.println("6. Проверить, является ли родственником");
+            System.out.println("7. Открыть шкаф");
+            System.out.println("8. Позвать кошку");
+
             System.out.println("0. Выход");
 
-            var numberTask = ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 4);
+            var numberTask = ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 8);
 
             switch (numberTask) {
                 case 0 -> isWorking = false;
                 case 1 -> society.printAll();
                 case 2 -> society.choosePerson();
+                case 3 -> society.printParents();
+                case 4 -> society.printChildren();
+                case 5 -> society.printBrothers();
+                case 6 -> society.printIsSameFamily();
+                case 7 -> society.printChildren();
+                case 8 -> society.printChildren();
                 default -> System.out.println("Задача не выбрана");
             }
         }

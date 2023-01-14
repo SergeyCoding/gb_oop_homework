@@ -1,10 +1,13 @@
 package org.gb.oop.homework.familytree.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Член семьи
  */
 public class Person {
-    private String name;
+    private final String name;
     private Person mother;
     private Person father;
 
@@ -31,6 +34,28 @@ public class Person {
 
     public void setFather(Person father) {
         this.father = father;
+    }
+
+    public boolean isParentOf(Person p) {
+        return p.getFather() == this || p.getMother() == this;
+    }
+
+    public boolean isChildOf(Person p) {
+        return p.isParentOf(this);
+    }
+
+    public boolean isBrother(Person p) {
+        return this.mother.isParentOf(p) || this.father.isParentOf(p);
+    }
+
+    public boolean isAncestorOf(Person p) {
+        if (isParentOf(p))
+            return true;
+
+        var f = (father != null) && father.isAncestorOf(p);
+        var m = (mother != null) && mother.isAncestorOf(p);
+
+        return f || m;
     }
 
     @Override
