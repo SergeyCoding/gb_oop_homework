@@ -4,18 +4,38 @@ package org.gb.oop.homework.familytree.model;
  * Член семьи
  */
 public class Person {
-    public Person Mother;
-    public Person Father;
+    private String name;
+    private Person mother;
+    private Person father;
 
-    public String name;
 
     public Person(String name) {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Person getMother() {
+        return mother;
+    }
+
+    public void setMother(Person mother) {
+        this.mother = mother;
+    }
+
+    public Person getFather() {
+        return father;
+    }
+
+    public void setFather(Person father) {
+        this.father = father;
+    }
+
     @Override
     public String toString() {
-        return name + "(Mother: " + (Mother == null ? "-" : Mother.name) + "; Father: " + (Father == null ? "-" : Father.name) + ")";
+        return name + "(Mother: " + (mother == null ? "-" : mother.name) + "; Father: " + (father == null ? "-" : father.name) + ")";
     }
 }
 

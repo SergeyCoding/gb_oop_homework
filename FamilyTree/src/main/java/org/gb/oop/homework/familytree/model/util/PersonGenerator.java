@@ -34,13 +34,13 @@ public class PersonGenerator {
             return;
 
         if (rnd.nextInt(10) > 3) {
-            p1.Father = createPerson();
-            AddParents(p1.Father, depth + 1);
+            p1.setFather(createPerson());
+            AddParents(p1.getFather(), depth + 1);
         }
 
         if (rnd.nextInt(10) > 3) {
-            p1.Mother = createPerson();
-            AddParents(p1.Mother, depth + 1);
+            p1.setMother(createPerson());
+            AddParents(p1.getMother(), depth + 1);
         }
     }
 }

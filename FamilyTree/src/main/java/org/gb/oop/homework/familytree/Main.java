@@ -63,16 +63,17 @@ public class Main {
 
         System.out.println(PersonRelations.isFamilyTies(rootPeople.get(0), rootPeople.get(1)));
 
-        if (rootPeople.get(0).Mother != null) {
-            System.out.println(PersonRelations.isFamilyTies(rootPeople.get(0), rootPeople.get(0).Mother));
+        if (rootPeople.get(0).getMother() != null) {
+            System.out.println(PersonRelations.isFamilyTies(rootPeople.get(0), rootPeople.get(0).getMother()));
         }
 
         var isWorking = true;
 
         while (isWorking) {
             System.out.println("\nГенеалогическое древо");
+            System.out.printf("Текущий член сообщества: %s\n", society.getActivePerson().getName());
             System.out.println("1. Вывести всех членов сообщества");
-            System.out.println("2. Сотрудники");
+            System.out.println("2. Выбрать члена сообщества");
             System.out.println("3. Пирамидальная сортировка");
             System.out.println("4. 8 ферзей");
             System.out.println("0. Выход");
@@ -82,6 +83,7 @@ public class Main {
             switch (numberTask) {
                 case 0 -> isWorking = false;
                 case 1 -> society.printAll();
+                case 2 -> society.choosePerson();
                 default -> System.out.println("Задача не выбрана");
             }
         }

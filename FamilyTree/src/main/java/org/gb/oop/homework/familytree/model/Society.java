@@ -8,9 +8,7 @@ import java.util.List;
  */
 public class Society {
 
-    public List<Person> getPersonList() {
-        return new ArrayList<>(personList);
-    }
+    private int activePerson;
 
     private final List<Person> personList = new ArrayList<>();
 
@@ -18,15 +16,30 @@ public class Society {
         for (var p : rootPersonList) {
             fillArray(p);
         }
+
+        activePerson = 0;
     }
+
+    public List<Person> getPersonList() {
+        return new ArrayList<>(personList);
+    }
+
+    public Person getActivePerson() {
+        return personList.get(activePerson);
+    }
+
+    public void setActivePerson(int activePerson) {
+        this.activePerson = activePerson;
+    }
+
 
     private void fillArray(Person person) {
         if (person == null) {
             return;
         }
         personList.add(person);
-        fillArray(person.Mother);
-        fillArray(person.Father);
+        fillArray(person.getMother());
+        fillArray(person.getFather());
     }
 
     public void printAll() {
@@ -37,5 +50,8 @@ public class Society {
 
     public int getCount() {
         return personList.size();
+    }
+
+    public void choosePerson() {
     }
 }
