@@ -2,6 +2,7 @@ package org.gb.oop.homework.familytree;
 
 import org.gb.oop.homework.familytree.model.Person;
 import org.gb.oop.homework.familytree.model.PersonRelations;
+import org.gb.oop.homework.familytree.model.RestAmbienceManager;
 import org.gb.oop.homework.familytree.model.Society;
 import org.gb.oop.homework.familytree.model.util.PersonGenerator;
 import org.gb.tools.ConsoleHelper;
@@ -78,12 +79,11 @@ public class Main {
             System.out.println("4. Вывести детей");
             System.out.println("5. Вывести братьев и сестер");
             System.out.println("6. Проверить, является ли родственником");
-            System.out.println("7. Открыть шкаф");
-            System.out.println("8. Позвать кошку");
+            System.out.println("7. Демонстрация взаимодействия с окружением");
 
             System.out.println("0. Выход");
 
-            var numberTask = ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 8);
+            var numberTask = ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 7);
 
             switch (numberTask) {
                 case 0 -> isWorking = false;
@@ -93,8 +93,7 @@ public class Main {
                 case 4 -> society.printChildren();
                 case 5 -> society.printBrothers();
                 case 6 -> society.printIsSameFamily();
-                case 7 -> society.printChildren();
-                case 8 -> society.printChildren();
+                case 7 -> RestAmbienceManager.run(society.getActivePerson());
                 default -> System.out.println("Задача не выбрана");
             }
         }

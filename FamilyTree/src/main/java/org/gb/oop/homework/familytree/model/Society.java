@@ -88,26 +88,12 @@ public class Society {
         Person ap = getActivePerson();
 
         printAll();
-        var p2 = ConsoleHelper.getNaturalInteger("Номер члена сообщества: ", x -> x >= 0 && x < personList.size());
+        var p2 = personList.get(ConsoleHelper.getNaturalInteger("Номер члена сообщества: ", x -> x >= 0 && x < personList.size()));
 
-        ap.isAncestorOf(personList.get(p2));
+        if (ap == p2 || ap.isAncestorOf(p2) || p2.isAncestorOf(ap)) {
+            System.out.println("Состоят в родственных отношениях");
+        } else {
+            System.out.println("Не состоят в родственных отношениях");
+        }
     }
-
-//    private void isAncestorOf(Person ap) {
-//        List<Person> pl = new ArrayList<>();
-//        getAncestors(pl, ap);
-//
-//        for (var p : pl) {
-//            System.out.println(p);
-//        }
-//    }
-//
-//    public void getAncestors(List<Person> pl, Person p) {
-//        Person ap = getActivePerson();
-//
-//        printAll();
-//        var p2 = ConsoleHelper.getNaturalInteger("Номер члена сообщества: ", x -> x >= 0 && x < personList.size());
-//
-//        if ()
-//    }
 }
