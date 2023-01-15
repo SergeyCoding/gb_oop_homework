@@ -12,13 +12,10 @@ public class Society {
 
     private int activePerson;
 
-    private final List<Person> personList = new ArrayList<>();
+    private final List<Person> personList;
 
     public Society(List<Person> rootPersonList) {
-        for (var p : rootPersonList) {
-            fillArray(p);
-        }
-
+        personList = rootPersonList;
         activePerson = 0;
     }
 
@@ -32,16 +29,6 @@ public class Society {
 
     public void setActivePerson(int activePerson) {
         this.activePerson = activePerson;
-    }
-
-
-    private void fillArray(Person person) {
-        if (person == null) {
-            return;
-        }
-        personList.add(person);
-        fillArray(person.getMother());
-        fillArray(person.getFather());
     }
 
     public void printAll() {
@@ -79,7 +66,7 @@ public class Society {
         var ap = personList.get(activePerson);
         System.out.print("\nСписок братьев и сестер: \n");
         for (var p : personList) {
-            if (ap.isParentOf(p))
+            if (ap.isBrother(p))
                 System.out.println(p);
         }
     }

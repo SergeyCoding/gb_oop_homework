@@ -1,13 +1,11 @@
 package org.gb.oop.homework.familytree;
 
 import org.gb.oop.homework.familytree.model.Person;
-import org.gb.oop.homework.familytree.model.PersonRelations;
 import org.gb.oop.homework.familytree.model.RestAmbienceManager;
 import org.gb.oop.homework.familytree.model.Society;
 import org.gb.oop.homework.familytree.model.util.PersonGenerator;
 import org.gb.tools.ConsoleHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,21 +50,15 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Генеалогическое древо");
 
-        List<Person> rootPeople = new ArrayList<>();
 
         System.out.println("Генерация семей...");
-        generatePeople(rootPeople);
-        System.out.printf("Сгенерировано %d семьи\n", rootPeople.size());
+        var pg = new PersonGenerator(RootPersonCount);
+        pg.generatePeople();
+        List<Person> people = pg.getPeople();
 
-        Society society = new Society(rootPeople);
+        Society society = new Society(people);
         System.out.printf("Сгенерировано %d человек\n", society.getCount());
         //society.printAll();
-
-        System.out.println(PersonRelations.isFamilyTies(rootPeople.get(0), rootPeople.get(1)));
-
-        if (rootPeople.get(0).getMother() != null) {
-            System.out.println(PersonRelations.isFamilyTies(rootPeople.get(0), rootPeople.get(0).getMother()));
-        }
 
         var isWorking = true;
 
@@ -99,13 +91,5 @@ public class Main {
         }
 
         System.out.println("Работа завершена...");
-    }
-
-    private static void generatePeople(List<Person> rootPeople) {
-        for (int i = 0; i < RootPersonCount; i++) {
-            var p1 = PersonGenerator.createPerson();
-            PersonGenerator.AddParents(p1);
-            rootPeople.add(p1);
-        }
     }
 }

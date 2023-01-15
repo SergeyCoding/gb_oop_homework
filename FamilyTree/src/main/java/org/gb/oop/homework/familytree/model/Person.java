@@ -1,8 +1,5 @@
 package org.gb.oop.homework.familytree.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Член семьи
  */
@@ -45,7 +42,9 @@ public class Person {
     }
 
     public boolean isBrother(Person p) {
-        return this.mother.isParentOf(p) || this.father.isParentOf(p);
+        var m = mother != null && mother.isParentOf(p);
+        var f = father != null && father.isParentOf(p);
+        return this != p && (m || f);
     }
 
     public boolean isAncestorOf(Person p) {
@@ -61,6 +60,10 @@ public class Person {
     @Override
     public String toString() {
         return name + "(Mother: " + (mother == null ? "-" : mother.name) + "; Father: " + (father == null ? "-" : father.name) + ")";
+    }
+
+    public boolean hasParent() {
+        return father != null || mother != null;
     }
 }
 
