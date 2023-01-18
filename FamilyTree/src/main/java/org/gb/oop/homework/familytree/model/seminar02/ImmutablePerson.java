@@ -13,7 +13,8 @@ import java.util.Map;
  * <p>
  * Все поля класса должны быть приватными в соответствии с принципами инкапсуляции.
  * <p>
- * Для корректного создания экземпляра в нем должны быть параметризованные конструкторы, через которые осуществляется первоначальная инициализация полей класса.
+ * Для корректного создания экземпляра в нем должны быть параметризованные конструкторы,
+ * через которые осуществляется первоначальная инициализация полей класса.
  * <p>
  * Для исключения возможности изменения состояния после инстанцирования, в классе не должно быть сеттеров.
  * <p>
@@ -22,13 +23,20 @@ import java.util.Map;
 public final class ImmutablePerson {
     private final String name;
     private final LocalDate birthday;
-    private final Map<String, String> specialSigns;
+    private final Map<String, String> specialSigns = HashMap.newHashMap(0);
 
 
     public ImmutablePerson(String name, LocalDate birthday, Map<String, String> specialSigns) {
         this.name = name;
         this.birthday = birthday;
-        this.specialSigns = specialSigns;
+        
+        for (String key : specialSigns.keySet()) {
+            this.specialSigns.put(key, specialSigns.get(key));
+        }
+    }
+
+    public ImmutablePerson(String name, LocalDate birthday) {
+        this(name, birthday, HashMap.newHashMap(0));
     }
 
     public String getName() {
@@ -39,6 +47,9 @@ public final class ImmutablePerson {
         return birthday;
     }
 
+    /**
+     * Особые приметы
+     */
     public Map<String, String> getSpecialSigns() {
         Map<String, String> deepCopy = new HashMap<String, String>();
         for (String key : specialSigns.keySet()) {

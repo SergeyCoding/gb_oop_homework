@@ -54,6 +54,10 @@ public class PersonGenerator {
         if (rnd.nextInt(100) > 90)
             specialMeta.put("татуировка", "лилия");
 
+        if (specialMeta.isEmpty()) {
+            return new ImmutablePerson(sb.toString(), birthday);
+        }
+
         return new ImmutablePerson(sb.toString(), birthday, specialMeta);
     }
 
