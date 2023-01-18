@@ -12,18 +12,18 @@ public class Society {
 
     private int activePerson;
 
-    private final List<Person> personList;
+    private final List<SocietyMember> personList;
 
-    public Society(List<Person> rootPersonList) {
+    public Society(List<SocietyMember> rootPersonList) {
         personList = rootPersonList;
         activePerson = 0;
     }
 
-    public List<Person> getPersonList() {
+    public List<SocietyMember> getPersonList() {
         return new ArrayList<>(personList);
     }
 
-    public Person getActivePerson() {
+    public SocietyMember getActivePerson() {
         return personList.get(activePerson);
     }
 
@@ -72,7 +72,7 @@ public class Society {
     }
 
     public void printIsSameFamily() {
-        Person ap = getActivePerson();
+        SocietyMember ap = getActivePerson();
 
         printAll();
         var p2 = personList.get(ConsoleHelper.getNaturalInteger("Номер члена сообщества: ", x -> x >= 0 && x < personList.size()));

@@ -9,9 +9,9 @@ import org.gb.oop.homework.familytree.model.ambience.HomeAnimal;
  */
 public class RestPerson {
 
-    private final Person person;
+    private final SocietyMember person;
 
-    public RestPerson(Person person) {
+    public RestPerson(SocietyMember person) {
         this.person = person;
     }
 
