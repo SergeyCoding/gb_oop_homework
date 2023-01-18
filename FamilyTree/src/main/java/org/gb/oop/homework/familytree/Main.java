@@ -1,8 +1,8 @@
 package org.gb.oop.homework.familytree;
 
-import org.gb.oop.homework.familytree.model.Person;
 import org.gb.oop.homework.familytree.model.RestAmbienceManager;
 import org.gb.oop.homework.familytree.model.Society;
+import org.gb.oop.homework.familytree.model.SocietyMember;
 import org.gb.oop.homework.familytree.model.util.PersonGenerator;
 import org.gb.tools.ConsoleHelper;
 
@@ -54,7 +54,7 @@ public class Main {
         System.out.println("Генерация семей...");
         var pg = new PersonGenerator(RootPersonCount);
         pg.generatePeople();
-        List<Person> people = pg.getPeople();
+        List<SocietyMember> people = pg.getPeople();
 
         Society society = new Society(people);
         System.out.printf("Сгенерировано %d человек\n", society.getCount());

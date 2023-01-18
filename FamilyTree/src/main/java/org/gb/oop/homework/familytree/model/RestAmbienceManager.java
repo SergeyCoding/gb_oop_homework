@@ -17,7 +17,7 @@ import org.gb.oop.homework.familytree.model.ambience.Dog;
  * Какое ещё взаимодействие может быть?
  */
 public class RestAmbienceManager {
-    public static void run(Person activePerson) {
+    public static void run(SocietyMember activePerson) {
         System.out.println("\n\nДемонстрация взаимодействия человека с окружением");
         System.out.println("Создаем окружение...");
         var box = new BoxFurniture(3);

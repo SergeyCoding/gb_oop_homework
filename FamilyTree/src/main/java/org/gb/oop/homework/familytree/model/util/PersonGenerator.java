@@ -1,8 +1,11 @@
 package org.gb.oop.homework.familytree.model.util;
 
-import org.gb.oop.homework.familytree.model.Person;
+import org.gb.oop.homework.familytree.model.SocietyMember;
+import org.gb.oop.homework.familytree.model.seminar02.ImmutablePerson;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -14,17 +17,17 @@ public class PersonGenerator {
     public static final int MaxDepth = 7;
     public static Random rnd = new Random();
     private final int countFamily;
-    private final List<Person> people = new ArrayList<>();
+    private final List<SocietyMember> people = new ArrayList<>();
 
     public PersonGenerator(int countFamily) {
         this.countFamily = countFamily;
     }
 
-    public List<Person> getPeople() {
+    public List<SocietyMember> getPeople() {
         return people;
     }
 
-    public Person createPerson() {
+    public SocietyMember createPerson() {
 
         var sb = new StringBuilder();
 
@@ -34,21 +37,38 @@ public class PersonGenerator {
         }
         sb.append(rnd.nextInt(1000));
 
-        return new Person(sb.toString());
+        return new SocietyMember(createPerson(sb));
     }
 
-    public void AddParents(Person p1) {
+    private static ImmutablePerson createPerson(StringBuilder sb) {
+        var birthday = LocalDate.of(rnd.nextInt(1900, 2022), rnd.nextInt(1, 13), rnd.nextInt(1, 29));
+
+        var specialMeta = new HashMap<String, String>();
+
+        if (rnd.nextInt(100) > 80)
+            specialMeta.put("глаза", "карие");
+
+        if (rnd.nextInt(100) > 90)
+            specialMeta.put("шрам", "на левой щеке");
+
+        if (rnd.nextInt(100) > 90)
+            specialMeta.put("татуировка", "лилия");
+
+        return new ImmutablePerson(sb.toString(), birthday, specialMeta);
+    }
+
+    public void AddParents(SocietyMember p1) {
         AddParents(p1, 0);
     }
 
-    public Person AddBrother(Person p1) {
+    public SocietyMember AddBrother(SocietyMember p1) {
         var p2 = createPerson();
         p2.setMother(p1.getMother());
         p2.setFather(p1.getFather());
         return p2;
     }
 
-    public void AddParents(Person p1, int depth) {
+    public void AddParents(SocietyMember p1, int depth) {
         if (depth > MaxDepth)
             return;
 
@@ -70,7 +90,7 @@ public class PersonGenerator {
             fillArray(p1);
         }
 
-        for (Person person : people.stream().toList()) {
+        for (SocietyMember person : people.stream().toList()) {
             if (person.hasParent()) {
                 for (int i = 1; i < rnd.nextInt(4); i++) {
                     people.add(AddBrother(person));
@@ -79,7 +99,7 @@ public class PersonGenerator {
         }
     }
 
-    private void fillArray(Person person) {
+    private void fillArray(SocietyMember person) {
         if (person == null) {
             return;
         }
