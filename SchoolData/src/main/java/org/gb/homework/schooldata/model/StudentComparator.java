@@ -1,4 +1,4 @@
-import Model.Student;
+package org.gb.homework.schooldata.model;
 
 import java.util.Comparator;
 
@@ -9,5 +9,4 @@ public class StudentComparator implements Comparator<Student> {
         else if (o1.getYear() == o2.getYear()) return 0;
         return -1;
     }
-
 }

@@ -1,12 +1,12 @@
-package Model;
+package org.gb.homework.schooldata.model;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Student extends User {
     private String name;
     private float grade;
     private int year;
+    private Teacher teacher;
 
     public Student(String name, float grade, int year) {
         this.name = name;
@@ -14,9 +14,6 @@ public class Student extends User {
         this.year = year;
 
     }
-
-    private Teacher teacher;
-
 
     public String getName() {
         return name;

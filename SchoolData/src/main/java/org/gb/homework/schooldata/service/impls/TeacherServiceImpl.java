@@ -1,14 +1,15 @@
-package Service.impls;
+package org.gb.homework.schooldata.service.impls;
 
-import Model.Teacher;
-import Service.TeacherService;
-import Repository.TeacherRepository;
+import org.gb.homework.schooldata.model.Teacher;
+import org.gb.homework.schooldata.repository.TeacherRepository;
+import org.gb.homework.schooldata.service.TeacherService;
 
 public class TeacherServiceImpl implements TeacherService {
     private TeacherRepository teacherRepository = new TeacherRepository();
+
     @Override
     public void add(Teacher teacher) {
-        if (teacher != null){
+        if (teacher != null) {
             teacherRepository.save(teacher);
         }
 
@@ -16,7 +17,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void remove(Teacher teacher) {
-        if (teacher != null){
+        if (teacher != null) {
             teacherRepository.remove(teacher);
         }
 
@@ -24,7 +25,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void edit(String name) {
-        if (name != null){
+        if (name != null) {
             teacherRepository.edit(name);
         }
 

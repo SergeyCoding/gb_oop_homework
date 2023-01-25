@@ -1,4 +1,4 @@
-package Model;
+package org.gb.homework.schooldata.model;
 
 import java.util.List;
 import java.util.Objects;

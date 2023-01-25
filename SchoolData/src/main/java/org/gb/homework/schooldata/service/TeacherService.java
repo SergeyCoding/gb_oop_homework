@@ -1,9 +1,6 @@
-package Service;
+package org.gb.homework.schooldata.service;
 
-import Model.Student;
-import Model.Teacher;
-
-import java.util.List;
+import org.gb.homework.schooldata.model.Teacher;
 
 public interface TeacherService {
     void add(Teacher teacher);
