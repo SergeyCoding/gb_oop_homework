@@ -1,5 +1,6 @@
 package org.gb.homework.schooldata;
 
+import org.gb.homework.schooldata.View.SchoolDataView;
 import org.gb.homework.schooldata.model.Student;
 import org.gb.homework.schooldata.model.Teacher;
 import org.gb.homework.schooldata.repository.Repository;
@@ -19,5 +20,9 @@ public class Main {
         UserService<Teacher> teacherService = new UserServiceImpl<>(teacherRepository);
 
         service.add(new Student("Roman", 4.92f, 4));
+
+        var view = new SchoolDataView();
+
+        view.showMenu();
     }
 }
