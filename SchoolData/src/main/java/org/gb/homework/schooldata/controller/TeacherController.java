@@ -1,8 +1,12 @@
 package org.gb.homework.schooldata.controller;
 
 import org.gb.homework.schooldata.model.Teacher;
+import org.gb.homework.schooldata.model.User;
 import org.gb.homework.schooldata.service.UserService;
 import org.gb.homework.schooldata.view.TeacherView;
+
+import java.util.Comparator;
+import java.util.Optional;
 
 public class TeacherController {
     private final UserService<Teacher> teacherService;
@@ -31,7 +35,7 @@ public class TeacherController {
                 case 0 -> isWorking = false;
                 case 1 -> printAll();
                 case 2 -> chooseTeacher();
-//                case 3 -> society.printParents();
+                case 3 -> addTeacher();
 //                case 4 -> society.printChildren();
 //                case 5 -> society.printBrothers();
 //                case 6 -> society.printIsSameFamily();
@@ -42,9 +46,27 @@ public class TeacherController {
 
     }
 
+    private void addTeacher() {
+        var name = view.inputName();
+
+        Optional<Teacher> lastTeacher = teacherService.getAllUsers().stream().max(Comparator.comparingInt(User::getId));
+
+        var nextId = 0;
+
+        if (lastTeacher.isPresent())
+            nextId = lastTeacher.get().getId() + 1;
+
+        teacherService.add(new Teacher(nextId, name));
+    }
+
     private void chooseTeacher() {
         var users = teacherService.getAllUsers();
         var teacherId = view.getTeacherId(users.size());
-        currentTeacher = users.get(teacherId);
+
+        if (teacherId >= 0 && teacherId < users.size()) {
+            currentTeacher = users.get(teacherId);
+        } else {
+            currentTeacher = null;
+        }
     }
 }

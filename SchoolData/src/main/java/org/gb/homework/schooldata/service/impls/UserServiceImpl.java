@@ -10,73 +10,30 @@ import java.util.List;
  *
  */
 public class UserServiceImpl<T extends User> implements UserService<T> {
-    private final Repository<T> repository;
+    protected final Repository<T> repository;
 
     public UserServiceImpl(Repository<T> repository) {
         this.repository = repository;
     }
 
     @Override
-    public void add(T student) {
+    public List<T> getAllUsers() {
+        return repository.getAll();
+    }
+
+    @Override
+    public void add(T user) {
+        repository.save(user);
 
     }
 
     @Override
     public void remove(T user) {
-
+        repository.remove(user);
     }
 
     @Override
     public void edit(T user) {
-
+        repository.save(user);
     }
-
-    @Override
-    public List<T> getAllUsers() {
-        return null;
-    }
-
-
-//    @Override
-//    public void add(Student student) {
-//        if (student != null) {
-//            repository.save(student);
-//        } else {
-//            System.out.println("Student is null!");
-//        }
-//    }
-
-//    @Override
-//    public void remove(Student student) {
-//        if (student != null) {
-//            repository.remove(student);
-//        }
-//    }
-//
-//    @Override
-//    public void edit(Student student) {
-//        if (student != null) {
-//            repository.edit(student);
-//        }
-//    }
-
-//    @Override
-//    public void add(User student) {
-//
-//    }
-//
-//    @Override
-//    public void remove(User student) {
-//
-//    }
-//
-//    @Override
-//    public void edit(User student) {
-//
-//    }
-//
-//    @Override
-//    public List getAllUsers() {
-//        return repository.getAllStudents();
-//    }
 }

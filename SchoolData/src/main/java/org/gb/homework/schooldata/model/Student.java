@@ -6,13 +6,11 @@ public class Student extends User {
     private String name;
     private float grade;
     private int year;
-    private Teacher teacher;
 
-    public Student(String name, float grade, int year) {
-        this.name = name;
+    public Student(int id, String name, float grade, int year, Teacher teacher) {
+        super(id, name);
         this.grade = grade;
         this.year = year;
-
     }
 
     public String getName() {
@@ -58,7 +56,6 @@ public class Student extends User {
                 "name='" + name + '\'' +
                 ", grade=" + grade +
                 ", year=" + year +
-                ", teacher=" + teacher +
                 '}';
     }
 }

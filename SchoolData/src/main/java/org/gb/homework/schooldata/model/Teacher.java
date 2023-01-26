@@ -1,31 +1,22 @@
 package org.gb.homework.schooldata.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Teacher extends User {
-    private String name;
-    private List<Student> group;
+    private List<Student> group = new ArrayList<>();
 
-    public Teacher(String name, List<Student> group) {
-        this.name = name;
-        this.group = group;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Teacher(int id, String name) {
+        super(id, name);
     }
 
     public List<Student> getGroup() {
-        return group;
+        return group.stream().toList();
     }
 
-    public void setGroup(List<Student> group) {
-        this.group = group;
+    public void addStudent(Student student) {
+        this.group.add(student);
     }
 
     @Override

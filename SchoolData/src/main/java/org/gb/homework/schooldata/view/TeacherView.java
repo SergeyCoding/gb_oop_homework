@@ -26,13 +26,32 @@ public class TeacherView {
     }
 
     public void showAll(List<Teacher> users) {
+        if (users.size() == 0) {
+            System.out.println("\nНет ни одного учителя");
+            return;
+        }
 
+        System.out.println("Список учителей:");
+
+        for (var u : users) {
+            System.out.println(u);
+        }
     }
 
     public void showTaskError() {
+        System.out.println("Задача не выбрана");
     }
 
     public int getTeacherId(int maxId) {
+        if (maxId < 1) {
+            System.out.println("\nНет ни одного учителя");
+            return -1;
+        }
+
         return ConsoleHelper.getNaturalInteger("Выберите учителя: ", x -> x >= 0 && x <= maxId - 1);
+    }
+
+    public String inputName() {
+        return ConsoleHelper.getString("Добавление учителя. Введите имя: ");
     }
 }
