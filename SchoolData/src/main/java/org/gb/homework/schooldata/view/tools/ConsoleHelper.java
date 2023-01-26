@@ -1,4 +1,4 @@
-package org.gb.homework.schooldata.View;
+package org.gb.homework.schooldata.view.tools;
 
 import java.util.Scanner;
 import java.util.function.Predicate;
