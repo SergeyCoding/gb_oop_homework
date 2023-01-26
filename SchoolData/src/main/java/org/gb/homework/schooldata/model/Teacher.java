@@ -34,8 +34,6 @@ public class Teacher extends User {
 
     @Override
     public String toString() {
-        return "Teacher{" +
-                "name='" + name + '\'' +
-                '}';
+        return String.format("id=%d name=%s", getId(), name);
     }
 }

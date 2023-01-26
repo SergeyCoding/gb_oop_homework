@@ -36,14 +36,32 @@ public class TeacherController {
                 case 1 -> printAll();
                 case 2 -> chooseTeacher();
                 case 3 -> addTeacher();
-//                case 4 -> society.printChildren();
-//                case 5 -> society.printBrothers();
-//                case 6 -> society.printIsSameFamily();
-//                case 7 -> RestAmbienceManager.run(society.getActivePerson());
+                case 4 -> editTeacher();
+                case 5 -> deleteTeacher();
                 default -> view.showTaskError();
             }
         }
 
+    }
+
+    private void deleteTeacher() {
+        if (currentTeacher == null) {
+            view.showCurrentTeacherError();
+            return;
+        }
+        teacherService.remove(currentTeacher);
+        currentTeacher = null;
+    }
+
+    private void editTeacher() {
+        if (currentTeacher == null) {
+            view.showCurrentTeacherError();
+            return;
+        }
+
+        var name = view.inputName();
+        currentTeacher.setName(name);
+        teacherService.edit(currentTeacher);
     }
 
     private void addTeacher() {

@@ -52,6 +52,10 @@ public class TeacherView {
     }
 
     public String inputName() {
-        return ConsoleHelper.getString("Добавление учителя. Введите имя: ");
+        return ConsoleHelper.getString("Добавление учителя. Введите имя: ", x -> !x.isBlank());
+    }
+
+    public void showCurrentTeacherError() {
+        System.out.println("Не выбран учитель");
     }
 }

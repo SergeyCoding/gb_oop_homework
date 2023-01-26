@@ -5,10 +5,6 @@ import org.gb.homework.schooldata.view.tools.ConsoleHelper;
 //Меню
 public class SchoolDataView {
 
-    public void update() {
-
-    }
-
     public int showMenu() {
         System.out.println("\nУчебное заведение");
         System.out.println("1. Учителя");
