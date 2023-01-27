@@ -38,10 +38,14 @@ public class TeacherController {
                 case 3 -> addTeacher();
                 case 4 -> editTeacher();
                 case 5 -> deleteTeacher();
+                case 6 -> addStudents();
                 default -> view.showTaskError();
             }
         }
 
+    }
+
+    private void addStudents() {
     }
 
     private void deleteTeacher() {
@@ -78,13 +82,10 @@ public class TeacherController {
     }
 
     private void chooseTeacher() {
-        var users = teacherService.getAllUsers();
-        var teacherId = view.getTeacherId(users.size());
+        var nextId = teacherService.getNextId();
+        var teacherId = view.getTeacherId(nextId);
 
-        if (teacherId >= 0 && teacherId < users.size()) {
-            currentTeacher = users.get(teacherId);
-        } else {
-            currentTeacher = null;
-        }
+        currentTeacher = teacherService.getAllUsers().stream().filter(x -> x.getId() == teacherId)
+                .findFirst().orElse(null);
     }
 }

@@ -19,10 +19,11 @@ public class TeacherView {
         System.out.println("3. Добавить");
         System.out.println("4. Изменить");
         System.out.println("5. Удалить");
+        System.out.println("6. Назначить студентов");
 
         System.out.println("0. Вернуться в главное меню");
 
-        return ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 5);
+        return ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 6);
     }
 
     public void showAll(List<Teacher> users) {
@@ -42,13 +43,13 @@ public class TeacherView {
         System.out.println("Задача не выбрана");
     }
 
-    public int getTeacherId(int maxId) {
-        if (maxId < 1) {
+    public int getTeacherId(int nextId) {
+        if (nextId == 0) {
             System.out.println("\nНет ни одного учителя");
             return -1;
         }
 
-        return ConsoleHelper.getNaturalInteger("Выберите учителя: ", x -> x >= 0 && x <= maxId - 1);
+        return ConsoleHelper.getNaturalInteger("Выберите id учителя: ", x -> x >= 0 && x < nextId);
     }
 
     public String inputName() {

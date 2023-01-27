@@ -1,4 +1,6 @@
-package org.gb.homework.schooldata.model;
+package org.gb.homework.schooldata.model.comparators;
+
+import org.gb.homework.schooldata.model.Student;
 
 import java.util.Comparator;
 

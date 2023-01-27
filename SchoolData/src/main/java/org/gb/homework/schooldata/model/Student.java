@@ -1,17 +1,19 @@
 package org.gb.homework.schooldata.model;
 
+import org.gb.homework.schooldata.AppConst;
+
 import java.util.Objects;
 
 public class Student extends User {
-    private String name;
     private float grade;
     private int year;
 
-    public Student(int id, String name, float grade, int year, Teacher teacher) {
+    public Student(int id, String name, float grade, int year) {
         super(id, name);
         this.grade = grade;
         this.year = year;
     }
+
 
     public String getName() {
         return name;
@@ -19,6 +21,11 @@ public class Student extends User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String serialize() {
+        return String.format("%s;\t;%d;\t;%b;\t;%s;\t;%g;\t;%d", AppConst.STUDENT, getId(), isActual(), getName(), getGrade(), getYear());
     }
 
     public float getGrade() {
@@ -52,10 +59,6 @@ public class Student extends User {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", grade=" + grade +
-                ", year=" + year +
-                '}';
+        return String.format("id=%d name=%s grade=%g year=%d", getId(), name, grade, year);
     }
 }

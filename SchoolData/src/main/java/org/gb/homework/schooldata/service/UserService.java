@@ -13,4 +13,5 @@ public interface UserService<T extends User> {
 
     void remove(T user);
 
+    int getNextId();
 }

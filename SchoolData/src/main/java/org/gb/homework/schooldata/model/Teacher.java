@@ -1,6 +1,9 @@
 package org.gb.homework.schooldata.model;
 
+import org.gb.homework.schooldata.AppConst;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,6 +12,12 @@ public class Teacher extends User {
 
     public Teacher(int id, String name) {
         super(id, name);
+    }
+
+    @Override
+    public String serialize() {
+        List<String> ts = Arrays.asList(AppConst.TEACHER, Integer.toString(getId()), Boolean.toString(isActual()), getName());
+        return String.join(AppConst.DELIMITER, ts);
     }
 
     public List<Student> getGroup() {
