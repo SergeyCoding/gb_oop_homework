@@ -38,8 +38,8 @@ public class AppController {
                     studentController.run();
                 }
                 case 3 -> {
-                    var studentController = new AssignController(services.get(AppConst.TEACHER), services.get(AppConst.STUDENT), new AssignView());
-                    studentController.run();
+                    var assignController = new AssignController(services.get(AppConst.TEACHER), services.get(AppConst.STUDENT), new AssignView());
+                    assignController.run();
                 }
                 default -> view.showTaskError();
             }
