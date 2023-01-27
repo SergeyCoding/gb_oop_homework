@@ -43,6 +43,7 @@ import java.util.List;
  * но совершенно не знаем прабабушку - как хранить такие связи или что будет если в компоненту
  * обхода передать ссылку на null-дерево.
  */
+ https://github.com/microsoft/referencesource/blob/master/mscorlib/system/int32.cs
 public class Main {
 
     public static final int RootPersonCount = 2;
