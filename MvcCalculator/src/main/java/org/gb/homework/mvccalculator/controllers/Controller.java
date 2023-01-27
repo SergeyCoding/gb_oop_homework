@@ -1,20 +1,23 @@
 package org.gb.homework.mvccalculator.controllers;
 
 
-import org.gb.homework.mvccalculator.model.SimpleCalculator;
-import org.gb.homework.mvccalculator.view.CalcView;
+import org.gb.homework.mvccalculator.model.Calculator;
+import org.gb.homework.mvccalculator.view.View;
 import org.gb.homework.mvccalculator.view.tools.ConsoleHelper;
 
 import java.util.function.Predicate;
 
 public class Controller {
-    public Controller(SimpleCalculator model, CalcView view) {
+    private final Calculator calc;
+    private final View view;
+
+    public Controller(Calculator calc, View view) {
+        this.calc = calc;
+        this.view = view;
     }
 
-    public static void run() {
-        CalcView.show();
-
-        var calc = new SimpleCalculator();
+    public void run() {
+        view.show();
 
         while (true) {
             var s = ConsoleHelper.getString("> ", new CalcOperationPredicate());
@@ -28,10 +31,10 @@ public class Controller {
     }
 
 
-    private static class CalcOperationPredicate implements Predicate<String> {
+    private class CalcOperationPredicate implements Predicate<String> {
         @Override
         public boolean test(String s) {
-            if (SimpleCalculator.isOperation(s) || s.equalsIgnoreCase("exit")) {
+            if (calc.isOperation(s) || s.equalsIgnoreCase("exit")) {
                 return true;
             }
 
@@ -43,6 +46,4 @@ public class Controller {
             }
         }
     }
-
-
 }

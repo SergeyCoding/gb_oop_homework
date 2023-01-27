@@ -1,33 +1,36 @@
-package org.gb.homework.mvccalculator.model;
+package org.gb.homework.mvccalculator.model.impl;
 
+
+import org.gb.homework.mvccalculator.model.Calculator;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * К калькулятору из предыдущего дз добавить логирование.
- */
-public class SimpleCalculator {
+
+public class CalculatorImpl implements Calculator {
 
     private static final List<String> op = Arrays.asList("+", "-", "*", "/", "c", "cc");
 
     private final Stack<Double> calcStack = new Stack<>();
     private final Stack<String> calcStackHistory = new Stack<>();
 
-    public SimpleCalculator() {
+    public CalculatorImpl() {
         calcStackInit();
     }
 
-    public static boolean isOperation(String s) {
+
+    public boolean isOperation(String s) {
         return op.contains(s);
     }
 
+    @Override
     public double pushAction(String op) {
         return pushActionHistory(op, false);
     }
 
-    private double pushActionHistory(String op, boolean isHistory) {
+    @Override
+    public double pushActionHistory(String op, boolean isHistory) {
         if (!isHistory) {
             calcStackHistory.push(op);
         }
@@ -41,7 +44,8 @@ public class SimpleCalculator {
         return calcStack.peek();
     }
 
-    private void operation(String op) {
+    @Override
+    public void operation(String op) {
         if (calcStack.size() == 0) {
             calcStack.push(0d);
         }
@@ -82,7 +86,8 @@ public class SimpleCalculator {
         }
     }
 
-    private void calcStackInit() {
+    @Override
+    public void calcStackInit() {
         calcStack.clear();
         calcStack.push(0d);
     }
