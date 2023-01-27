@@ -38,15 +38,12 @@ public class TeacherController {
                 case 3 -> addTeacher();
                 case 4 -> editTeacher();
                 case 5 -> deleteTeacher();
-                case 6 -> addStudents();
                 default -> view.showTaskError();
             }
         }
 
     }
 
-    private void addStudents() {
-    }
 
     private void deleteTeacher() {
         if (currentTeacher == null) {

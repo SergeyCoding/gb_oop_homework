@@ -9,10 +9,11 @@ public class SchoolDataView {
         System.out.println("\nУчебное заведение");
         System.out.println("1. Учителя");
         System.out.println("2. Студенты");
+        System.out.println("3. Распределить студентов по учителям");
 
         System.out.println("0. Выход");
 
-        return ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 2);
+        return ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x -> x >= 0 && x <= 3);
     }
 
     public void showWorkComplete() {

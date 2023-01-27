@@ -3,6 +3,7 @@ package org.gb.homework.schooldata.controller;
 
 import org.gb.homework.schooldata.AppConst;
 import org.gb.homework.schooldata.service.UserService;
+import org.gb.homework.schooldata.view.AssignView;
 import org.gb.homework.schooldata.view.SchoolDataView;
 import org.gb.homework.schooldata.view.StudentView;
 import org.gb.homework.schooldata.view.TeacherView;
@@ -34,6 +35,10 @@ public class AppController {
                 }
                 case 2 -> {
                     var studentController = new StudentController(services.get(AppConst.STUDENT), new StudentView());
+                    studentController.run();
+                }
+                case 3 -> {
+                    var studentController = new AssignController(services.get(AppConst.TEACHER), services.get(AppConst.STUDENT), new AssignView());
                     studentController.run();
                 }
                 default -> view.showTaskError();

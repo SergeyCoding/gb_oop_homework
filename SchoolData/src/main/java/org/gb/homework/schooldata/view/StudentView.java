@@ -53,7 +53,7 @@ public class StudentView {
     }
 
     public String inputName() {
-        System.out.println("Добавление студента.");
+        System.out.println("Добавление/изменение студента");
         return ConsoleHelper.getString("Введите имя: ", x -> !x.isBlank());
     }
 

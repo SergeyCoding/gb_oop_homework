@@ -45,4 +45,8 @@ public class Teacher extends User {
     public String toString() {
         return String.format("id=%d name=%s", getId(), name);
     }
+
+    public void clearGroup() {
+        group.clear();
+    }
 }
