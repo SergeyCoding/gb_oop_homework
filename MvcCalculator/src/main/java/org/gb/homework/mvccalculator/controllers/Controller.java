@@ -3,7 +3,6 @@ package org.gb.homework.mvccalculator.controllers;
 
 import org.gb.homework.mvccalculator.model.Calculator;
 import org.gb.homework.mvccalculator.view.View;
-import org.gb.homework.mvccalculator.view.tools.ConsoleHelper;
 
 import java.util.function.Predicate;
 
@@ -17,15 +16,16 @@ public class Controller {
     }
 
     public void run() {
-        view.show();
+        view.showTitle();
 
         while (true) {
-            var s = ConsoleHelper.getString("> ", new CalcOperationPredicate());
+            String s = view.getOperation(new Controller.CalcOperationPredicate());
+
 
             if (s.equals("exit"))
                 break;
 
-            System.out.println(calc.pushAction(s));
+            view.showResult(calc.pushAction(s));
         }
 
     }

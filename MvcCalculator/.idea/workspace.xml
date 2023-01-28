@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ec22737-246a-494e-8b80-2eeee3351876" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/model/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/model/SimpleCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/model/impl/CalculatorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/CalcView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/CalcView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,14 +43,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.gb.homework.mvccalculator.Main" />
