@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ec22737-246a-494e-8b80-2eeee3351876" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/CalcView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/CalcView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/model/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gb/homework/mvccalculator/model/Calculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

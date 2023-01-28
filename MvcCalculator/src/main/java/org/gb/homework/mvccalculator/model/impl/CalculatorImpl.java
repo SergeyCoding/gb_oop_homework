@@ -29,8 +29,7 @@ public class CalculatorImpl implements Calculator {
         return pushActionHistory(op, false);
     }
 
-    @Override
-    public double pushActionHistory(String op, boolean isHistory) {
+    private double pushActionHistory(String op, boolean isHistory) {
         if (!isHistory) {
             calcStackHistory.push(op);
         }
@@ -44,8 +43,7 @@ public class CalculatorImpl implements Calculator {
         return calcStack.peek();
     }
 
-    @Override
-    public void operation(String op) {
+    private void operation(String op) {
         if (calcStack.size() == 0) {
             calcStack.push(0d);
         }
@@ -86,8 +84,7 @@ public class CalculatorImpl implements Calculator {
         }
     }
 
-    @Override
-    public void calcStackInit() {
+    private void calcStackInit() {
         calcStack.clear();
         calcStack.push(0d);
     }
