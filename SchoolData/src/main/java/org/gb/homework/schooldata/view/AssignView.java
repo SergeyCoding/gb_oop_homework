@@ -14,7 +14,7 @@ public class AssignView {
         if (group.size() == 0)
             System.out.println("\tстуденты не назначены");
 
-        System.out.printf("\tстуденты:");
+        System.out.print("\tстуденты:");
         for (var s : group) {
             System.out.printf("\t%d %s |", s.getId(), s.getName());
         }
