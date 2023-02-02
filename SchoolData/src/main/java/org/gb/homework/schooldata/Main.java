@@ -2,6 +2,7 @@ package org.gb.homework.schooldata;
 
 import org.gb.homework.schooldata.controller.AppController;
 import org.gb.homework.schooldata.controller.TeacherController;
+import org.gb.homework.schooldata.model.StudentBuilder;
 import org.gb.homework.schooldata.model.factories.impls.StudentFactory;
 import org.gb.homework.schooldata.model.factories.impls.TeacherFactory;
 import org.gb.homework.schooldata.repository.Repository;
@@ -35,9 +36,12 @@ import java.util.Map;
  * D - Экземпляры классов MVC создаются в Main (или специальном AppController - выполняющем роль диспетчера),
  * Связка экземпляров происходит путем "инъекции" в конструктор.
  * <p>
- * Добавлен Builder для класса Person
+ * Добавлен Builder для класса Student c выбрасыванием исключения,
+ * если не установлены обязательные поля. Задавать поля можно
+ * в любом порядке
  */
 public class Main {
+
     private static final Map<String, Repository> repositories = new HashMap<>();
     private static final Map<String, UserService> services = new HashMap<>();
 
@@ -45,6 +49,11 @@ public class Main {
     private static TeacherController teacherController;
 
     public static void main(String[] args) {
+
+        if (true) {
+            demonstrateStudentBuilder();
+        }
+
         repositories.put(AppConst.STUDENT, new Repository<>("students.txt", new StudentFactory()));
         repositories.put(AppConst.TEACHER, new Repository<>("teachers.txt", new TeacherFactory()));
 
@@ -53,5 +62,26 @@ public class Main {
 
         AppController controller = new AppController(services);
         controller.run();
+    }
+
+    private static void demonstrateStudentBuilder() {
+        System.out.println("Демонстрация StudentBuilder");
+
+        System.out.println("1. Исключение, если не установлены обязательные поля");
+        try {
+            var student = new StudentBuilder().setYear(2022).build();
+            System.out.println(student);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        System.out.println("2. Создание экземпляра:");
+        try {
+            var student = new StudentBuilder().setYear(2000).setId(5).setName("aaa").build();
+            System.out.println(student);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
