@@ -62,3 +62,4 @@ public class Student extends User {
         return String.format("id=%d name=%s grade=%g year=%d", getId(), name, grade, year);
     }
 }
+
