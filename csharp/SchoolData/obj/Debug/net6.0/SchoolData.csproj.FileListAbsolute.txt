@@ -1,5 +1,0 @@
-D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.csproj.AssemblyReference.cache
-D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.GeneratedMSBuildEditorConfig.editorconfig
-D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.AssemblyInfoInputs.cache
-D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.AssemblyInfo.cs
-D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.csproj.CoreCompileInputs.cache
