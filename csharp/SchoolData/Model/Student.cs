@@ -24,9 +24,9 @@
             this.name = name;
         }
 
-        public override String serialize()
+        public override String Serialize()
         {
-            return String.Format("%s;\t;%d;\t;%b;\t;%s;\t;%g;\t;%d", AppConst.STUDENT, getId(), isActual(), getName(), getGrade(), getYear());
+            return String.Format("%s;\t;%d;\t;%b;\t;%s;\t;%g;\t;%d", AppConst.STUDENT, getId(), IsActual(), getName(), getGrade(), getYear());
         }
 
         public float getGrade()

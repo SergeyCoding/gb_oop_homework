@@ -1,9 +1,6 @@
-﻿using Gb.Homework.SchoolData.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Gb.Homework.SchoolData.Model;
+using Gb.Homework.SchoolData.Service;
+using Gb.Homework.SchoolData.View;
 
 namespace Gb.Homework.SchoolData.Controllers
 {
@@ -11,9 +8,9 @@ namespace Gb.Homework.SchoolData.Controllers
 
     public class TeacherController
     {
-        private final UserService<Teacher> teacherService;
-        private final TeacherView view;
-    public Teacher currentTeacher;
+        private readonly UserService<Teacher> teacherService;
+        private readonly TeacherView view;
+        public Teacher currentTeacher;
 
         public TeacherController(UserService<Teacher> service, TeacherView view)
         {

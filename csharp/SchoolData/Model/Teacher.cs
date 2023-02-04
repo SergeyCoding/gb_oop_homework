@@ -1,65 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Gb.Homework.SchoolData.Model
+﻿namespace Gb.Homework.SchoolData.Model
 {
 
 
     public class Teacher : User
     {
-    private List<Student> group = new ArrayList<>();
+        private List<Student> group = new();
 
-    public Teacher(int id, String name)
-    {
-        super(id, name);
-    }
+        public Teacher(int id, String name) : base(id, name) { }
 
-    @Override
-    public String serialize()
-    {
-        List<String> ts = Arrays.asList(AppConst.TEACHER, Integer.toString(getId()), Boolean.toString(isActual()), getName());
-        return String.join(AppConst.DELIMITER, ts);
-    }
+        public override String Serialize()
+        {
+            List<String> ts = new[] { AppConst.TEACHER, getId()., Boolean.toString(IsActual()), getName() };
+            return String.Join(AppConst.DELIMITER, ts);
+        }
 
-    public List<Student> getGroup()
-    {
-        return group.stream().toList();
-    }
+        public List<Student> getGroup()
+        {
+            return group.ToList();
+        }
 
-    public void addStudent(Student student)
-    {
-        this.group.add(student);
-    }
+        public void addStudent(Student student)
+        {
+            group.Add(student);
+        }
 
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Teacher teacher = (Teacher)o;
-        return Objects.equals(name, teacher.name);
-    }
+        public override bool Equals(object? obj)
+        {
+            if (this == obj) return true;
+            if (obj == null || GetType() != obj.GetType()) return false;
+            Teacher teacher = (Teacher)obj;
+            return object.Equals(name, teacher.name);
+        }
 
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash(name);
-    }
+        public override int GetHashCode()
+        {
+            return name.GetHashCode();
+        }
 
-    @Override
-    public String toString()
-    {
-        return String.format("id=%d name=%s", getId(), name);
-    }
 
-    public void clearGroup()
-    {
-        group.clear();
+        public override String ToString()
+        {
+            return String.Format("id=%d name=%s", getId(), name);
+        }
+
+        public void clearGroup()
+        {
+            group.clear();
+        }
     }
-}
 
 }
