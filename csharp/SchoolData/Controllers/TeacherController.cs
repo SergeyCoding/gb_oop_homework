@@ -19,81 +19,94 @@ namespace Gb.Homework.SchoolData.Controllers
         }
 
 
-        public void printAll()
+        public void PrintAll()
         {
             var users = teacherService.getAllUsers();
-            view.showAll(users);
+            view.ShowAll(users);
         }
 
-        public void run()
+        public void Run()
         {
             var isWorking = true;
 
             while (isWorking)
             {
 
-                var numberTask = view.showMenu(currentTeacher);
+                var numberTask = view.ShowMenu(currentTeacher);
 
                 switch (numberTask)
                 {
-                    case 0->isWorking = false;
-                    case 1->printAll();
-                    case 2->chooseTeacher();
-                    case 3->addTeacher();
-                    case 4->editTeacher();
-                    case 5->deleteTeacher();
-                    default -> view.showTaskError();
+                    case 0:
+                        isWorking = false;
+                        break;
+                    case 1:
+                        PrintAll();
+                        break;
+                    case 2:
+                        ChooseTeacher();
+                        break;
+                    case 3:
+                        AddTeacher();
+                        break;
+                    case 4:
+                        EditTeacher();
+                        break;
+                    case 5:
+                        DeleteTeacher();
+                        break;
+                    default:
+                        view.ShowTaskError();
+                        break;
                 }
             }
 
         }
 
 
-        private void deleteTeacher()
+        private void DeleteTeacher()
         {
             if (currentTeacher == null)
             {
-                view.showCurrentTeacherError();
+                view.ShowCurrentTeacherError();
                 return;
             }
             teacherService.remove(currentTeacher);
             currentTeacher = null;
         }
 
-        private void editTeacher()
+        private void EditTeacher()
         {
             if (currentTeacher == null)
             {
-                view.showCurrentTeacherError();
+                view.ShowCurrentTeacherError();
                 return;
             }
 
-            var name = view.inputName();
-            currentTeacher.setName(name);
+            var name = view.InputName();
+            currentTeacher.Name = name;
             teacherService.edit(currentTeacher);
         }
 
-        private void addTeacher()
+        private void AddTeacher()
         {
-            var name = view.inputName();
+            var name = view.InputName();
 
-            Optional<Teacher> lastTeacher = teacherService.getAllUsers().stream().max(Comparator.comparingInt(User::getId));
+            var lastTeacher = teacherService.getAllUsers().MaxBy(x => x.Id);
 
             var nextId = 0;
 
-            if (lastTeacher.isPresent())
-                nextId = lastTeacher.get().getId() + 1;
+            if (lastTeacher != null)
+                nextId = lastTeacher.Id + 1;
 
             teacherService.add(new Teacher(nextId, name));
         }
 
-        private void chooseTeacher()
+        private void ChooseTeacher()
         {
             var nextId = teacherService.getNextId();
-            var teacherId = view.getTeacherId(nextId);
+            var teacherId = view.GetTeacherId(nextId);
 
-            currentTeacher = teacherService.getAllUsers().stream().filter(x->x.getId() == teacherId)
-                    .findFirst().orElse(null);
+            currentTeacher = teacherService.getAllUsers().Where(x => x.Id == teacherId).First();
         }
     }
 

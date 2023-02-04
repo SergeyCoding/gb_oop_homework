@@ -8,7 +8,7 @@ namespace Gb.Homework.SchoolData.Controllers
 
     public class AppController
     {
-        private Dictionary<string, UserService<User>> services;
+        private readonly Dictionary<string, UserService<User>> services;
 
         public AppController(Dictionary<string, UserService<User>> services)
         {
@@ -34,8 +34,8 @@ namespace Gb.Homework.SchoolData.Controllers
                         break;
                     case 1:
 
-                        var teacherController = new TeacherController(services.get(AppConst.TEACHER), new TeacherView());
-                        teacherController.run();
+                        var teacherController = new TeacherController(services[AppConst.TEACHER], new TeacherView());
+                        teacherController.Run();
                         break;
                     case 2:
                         var studentController = new StudentController(services.get(AppConst.STUDENT), new StudentView());

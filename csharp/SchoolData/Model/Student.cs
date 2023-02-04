@@ -1,74 +1,45 @@
 ﻿namespace Gb.Homework.SchoolData.Model
 {
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class Student : User
     {
-        private float grade;
-        private int year;
+        public int Year { get; set; }
+        public float Grade { get; set; }
 
-        public Student(int id, String name, float grade, int year) : base(id, name)
+        public Student(int id, string name, float grade, int year) : base(id, name)
         {
-            this.grade = grade;
-            this.year = year;
+            Grade = grade;
+            Year = year;
         }
 
 
-        public String getName()
+
+        public override string Serialize()
         {
-            return name;
+            return string.Format("%s;\t;%d;\t;%b;\t;%s;\t;%g;\t;%d", AppConst.STUDENT, Id, IsActual, Name, Grade, Year);
         }
 
-        public void setName(String name)
+
+
+        public override string? ToString()
         {
-            this.name = name;
+            return string.Format("id=%d name=%s grade=%g year=%d", Id, Name, Grade, Year);
         }
 
-        public override String Serialize()
+        public override bool Equals(object? obj)
         {
-            return String.Format("%s;\t;%d;\t;%b;\t;%s;\t;%g;\t;%d", AppConst.STUDENT, getId(), IsActual(), getName(), getGrade(), getYear());
+            return obj is Student student &&
+                   Name == student.Name &&
+                   Grade == student.Grade &&
+                   Year == student.Year;
         }
 
-        public float getGrade()
+        public override int GetHashCode()
         {
-            return grade;
-        }
-
-        public void setGrade(float grade)
-        {
-            this.grade = grade;
-        }
-
-        public int getYear()
-        {
-            return year;
-        }
-
-        public void setYear(int year)
-        {
-            this.year = year;
-        }
-
-        @Override
-    public boolean equals(Object o)
-        {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Student student = (Student)o;
-            return Float.compare(student.grade, grade) == 0 && year == student.year && Objects.equals(name, student.name);
-        }
-        @Override
-    public int hashCode()
-        {
-            return Objects.hash(name, grade, year);
-        }
-
-        @Override
-    public String toString()
-        {
-            return String.format("id=%d name=%s grade=%g year=%d", getId(), name, grade, year);
+            return HashCode.Combine(Name, Grade, Year);
         }
     }
-
-
 }

@@ -8,13 +8,13 @@ namespace Gb.Homework.SchoolData.View
     public class TeacherView
     {
 
-        public int showMenu(Teacher currentTeacher)
+        public int ShowMenu(Teacher currentTeacher)
         {
             Console.WriteLine("\nУчителя");
 
             if (currentTeacher != null)
             {
-                Console.WriteLine("Текущий учитель: %s\n", currentTeacher.getName());
+                Console.WriteLine("Текущий учитель: %s\n", currentTeacher.Name);
             }
 
             Console.WriteLine("1. Показать всех учителей");
@@ -25,12 +25,12 @@ namespace Gb.Homework.SchoolData.View
 
             Console.WriteLine("0. Вернуться в главное меню");
 
-            return ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x->x >= 0 && x <= 5);
+            return ConsoleHelper.GetNaturalInteger("Выберите номер задачи: ", x => x >= 0 && x <= 5);
         }
 
-        public void showAll(List<Teacher> users)
+        public void ShowAll(List<Teacher> users)
         {
-            if (users.size() == 0)
+            if (users.Count == 0)
             {
                 Console.WriteLine("\nНет ни одного учителя");
                 return;
@@ -38,18 +38,16 @@ namespace Gb.Homework.SchoolData.View
 
             Console.WriteLine("Список учителей:");
 
-            for (var u : users)
-            {
-                Console.WriteLine(u);
-            }
+            foreach (Teacher teacher in users) { Console.WriteLine(teacher); }
+
         }
 
-        public void showTaskError()
+        public void ShowTaskError()
         {
             Console.WriteLine("Задача не выбрана");
         }
 
-        public int getTeacherId(int nextId)
+        public int GetTeacherId(int nextId)
         {
             if (nextId == 0)
             {
@@ -57,16 +55,16 @@ namespace Gb.Homework.SchoolData.View
                 return -1;
             }
 
-            return ConsoleHelper.getNaturalInteger("Выберите id учителя: ", x->x >= 0 && x < nextId);
+            return ConsoleHelper.GetNaturalInteger("Выберите id учителя: ", x => x >= 0 && x < nextId);
         }
 
-        public String inputName()
+        public string InputName()
         {
             Console.WriteLine("Добавление/изменение учителя ");
-            return ConsoleHelper.getString("Введите имя: ", x-> !x.isBlank());
+            return ConsoleHelper.GetString("Введите имя: ", x => !string.IsNullOrWhiteSpace(x));
         }
 
-        public void showCurrentTeacherError()
+        public void ShowCurrentTeacherError()
         {
             Console.WriteLine("Не выбран учитель");
         }

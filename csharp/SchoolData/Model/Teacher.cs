@@ -6,12 +6,12 @@
     {
         private List<Student> group = new();
 
-        public Teacher(int id, String name) : base(id, name) { }
+        public Teacher(int id, string name) : base(id, name) { }
 
-        public override String Serialize()
+        public override string Serialize()
         {
-            List<String> ts = new[] { AppConst.TEACHER, getId()., Boolean.toString(IsActual()), getName() };
-            return String.Join(AppConst.DELIMITER, ts);
+            List<string> ts = new[] { AppConst.TEACHER, Id.ToString(), IsActual.ToString(), Name }.ToList();
+            return string.Join(AppConst.DELIMITER, ts);
         }
 
         public List<Student> getGroup()
@@ -29,23 +29,23 @@
             if (this == obj) return true;
             if (obj == null || GetType() != obj.GetType()) return false;
             Teacher teacher = (Teacher)obj;
-            return object.Equals(name, teacher.name);
+            return Equals(Name, teacher.Name);
         }
 
         public override int GetHashCode()
         {
-            return name.GetHashCode();
+            return Name.GetHashCode();
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
-            return String.Format("id=%d name=%s", getId(), name);
+            return string.Format("id=%d name=%s", Id, Name);
         }
 
         public void clearGroup()
         {
-            group.clear();
+            group.Clear();
         }
     }
 
