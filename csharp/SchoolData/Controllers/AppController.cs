@@ -33,17 +33,16 @@ namespace Gb.Homework.SchoolData.Controllers
                         isWorking = false;
                         break;
                     case 1:
-
-                        var teacherController = new TeacherController(services[AppConst.TEACHER], new TeacherView());
-                        teacherController.Run();
+                        //var teacherController = new TeacherController(services[AppConst.TEACHER], new TeacherView());
+                        //teacherController.Run();
                         break;
                     case 2:
-                        var studentController = new StudentController(services.get(AppConst.STUDENT), new StudentView());
-                        studentController.run();
+                        //var studentController = new StudentController(services.get(AppConst.STUDENT), new StudentView());
+                        //studentController.run();
                         break;
                     case 3:
-                        var assignController = new AssignController(services.get(AppConst.TEACHER), services.get(AppConst.STUDENT), new AssignView());
-                        assignController.run();
+                        //var assignController = new AssignController(services.get(AppConst.TEACHER), services.get(AppConst.STUDENT), new AssignView());
+                        //assignController.run();
                         break;
                     default:
                         view.showTaskError();

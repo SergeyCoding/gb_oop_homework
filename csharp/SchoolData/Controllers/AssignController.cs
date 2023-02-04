@@ -1,13 +1,17 @@
-﻿namespace Gb.Homework.SchoolData.Controllers
+﻿using Gb.Homework.SchoolData.Model;
+using Gb.Homework.SchoolData.Service;
+using Gb.Homework.SchoolData.View;
+
+namespace Gb.Homework.SchoolData.Controllers
 {
 
     public class AssignController
     {
-        private final UserService<Teacher> teacherService;
-        private final UserService<Student> studentService;
-        private final AssignView view;
+        private UserService<Teacher> teacherService;
+        private UserService<Student> studentService;
+        private AssignView view;
 
-    public AssignController(UserService<Teacher> teacherService, UserService<Student> studentService, AssignView assignView)
+        public AssignController(UserService<Teacher> teacherService, UserService<Student> studentService, AssignView assignView)
         {
             this.teacherService = teacherService;
             this.studentService = studentService;
@@ -16,33 +20,33 @@
 
         public void run()
         {
-            view.showTitle();
+            view.ShowTitle();
 
-            for (var t : teacherService.getAllUsers())
+            foreach (var item in teacherService.GetAllUsers())
             {
-                t.clearGroup();
+                item.ClearGroup();
             }
 
-            Stack<Student> students = new Stack<>();
-            students.addAll(studentService.getAllUsers());
+            Stack<Student> students = new Stack<Student>();
 
-            while (!students.isEmpty())
+            studentService.GetAllUsers().ForEach(student => { students.Push(student); });
+
+            while (students.Count > 0)
             {
-                for (var t : teacherService.getAllUsers())
+                foreach (var t in teacherService.GetAllUsers())
                 {
-                    if (students.isEmpty())
+                    if (students.Count == 0)
                         break;
 
-                    t.addStudent(students.pop());
+                    t.addStudent(students.Pop());
                 }
             }
 
 
-            for (var t : teacherService.getAllUsers())
+            foreach (var t in teacherService.GetAllUsers())
             {
-                view.showTeacher(t);
+                view.ShowTeacher(t);
             }
         }
     }
-
 }

@@ -8,7 +8,7 @@ namespace Gb.Homework.SchoolData.View
     public class TeacherView
     {
 
-        public int ShowMenu(Teacher currentTeacher)
+        public int ShowMenu(Teacher? currentTeacher)
         {
             Console.WriteLine("\nУчителя");
 

@@ -2,18 +2,20 @@
 
 namespace Gb.Homework.SchoolData.Service
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface UserService<T> where T : User
     {
-        List<T> getAllUsers();
+        List<T> GetAllUsers();
 
-        void add(T user);
+        void Add(T user);
 
-        void edit(T user);
+        void Edit(T user);
 
-        void remove(T user);
+        void Remove(T user);
 
-        int getNextId();
+        int GetNextId();
     }
-
 }

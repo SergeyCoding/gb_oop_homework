@@ -3,3 +3,13 @@ D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\Sch
 D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.AssemblyInfoInputs.cache
 D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.AssemblyInfo.cs
 D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.csproj.CoreCompileInputs.cache
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\bin\Debug\net6.0\SchoolData.exe
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\bin\Debug\net6.0\SchoolData.deps.json
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\bin\Debug\net6.0\SchoolData.runtimeconfig.json
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\bin\Debug\net6.0\SchoolData.dll
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\bin\Debug\net6.0\SchoolData.pdb
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.dll
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\refint\SchoolData.dll
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.pdb
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\SchoolData.genruntimeconfig.cache
+D:\TFS\GB\08-OOP\homework\gb_oop_homework\csharp\SchoolData\obj\Debug\net6.0\ref\SchoolData.dll

@@ -43,7 +43,7 @@
             return string.Format("id=%d name=%s", Id, Name);
         }
 
-        public void clearGroup()
+        public void ClearGroup()
         {
             group.Clear();
         }

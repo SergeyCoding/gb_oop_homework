@@ -10,7 +10,7 @@ namespace Gb.Homework.SchoolData.Controllers
     {
         private readonly UserService<Teacher> teacherService;
         private readonly TeacherView view;
-        public Teacher currentTeacher;
+        public Teacher? currentTeacher;
 
         public TeacherController(UserService<Teacher> service, TeacherView view)
         {
@@ -21,11 +21,16 @@ namespace Gb.Homework.SchoolData.Controllers
 
         public void PrintAll()
         {
-            var users = teacherService.getAllUsers();
+            var users = teacherService.GetAllUsers();
             view.ShowAll(users);
         }
 
-        public void Run()
+        public Teacher? GetCurrentTeacher()
+        {
+            return currentTeacher;
+        }
+
+        public void Run(Teacher? currentTeacher)
         {
             var isWorking = true;
 
@@ -70,7 +75,7 @@ namespace Gb.Homework.SchoolData.Controllers
                 view.ShowCurrentTeacherError();
                 return;
             }
-            teacherService.remove(currentTeacher);
+            teacherService.Remove(currentTeacher);
             currentTeacher = null;
         }
 
@@ -84,29 +89,29 @@ namespace Gb.Homework.SchoolData.Controllers
 
             var name = view.InputName();
             currentTeacher.Name = name;
-            teacherService.edit(currentTeacher);
+            teacherService.Edit(currentTeacher);
         }
 
         private void AddTeacher()
         {
             var name = view.InputName();
 
-            var lastTeacher = teacherService.getAllUsers().MaxBy(x => x.Id);
+            var lastTeacher = teacherService.GetAllUsers().MaxBy(x => x.Id);
 
             var nextId = 0;
 
             if (lastTeacher != null)
                 nextId = lastTeacher.Id + 1;
 
-            teacherService.add(new Teacher(nextId, name));
+            teacherService.Add(new Teacher(nextId, name));
         }
 
         private void ChooseTeacher()
         {
-            var nextId = teacherService.getNextId();
+            var nextId = teacherService.GetNextId();
             var teacherId = view.GetTeacherId(nextId);
 
-            currentTeacher = teacherService.getAllUsers().Where(x => x.Id == teacherId).First();
+            currentTeacher = teacherService.GetAllUsers().Where(x => x.Id == teacherId).First();
         }
     }
 

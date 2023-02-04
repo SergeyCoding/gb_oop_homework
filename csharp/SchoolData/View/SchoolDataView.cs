@@ -1,4 +1,6 @@
-﻿namespace Gb.Homework.SchoolData.View
+﻿using Gb.Homework.SchoolData.View.Tools;
+
+namespace Gb.Homework.SchoolData.View
 {
     public class SchoolDataView
     {
@@ -13,7 +15,7 @@
 
             Console.WriteLine("0. Выход");
 
-            return ConsoleHelper.getNaturalInteger("Выберите номер задачи: ", x => x >= 0 && x <= 3);
+            return ConsoleHelper.GetNaturalInteger("Выберите номер задачи: ", x => x >= 0 && x <= 3);
         }
 
         public void showWorkComplete()

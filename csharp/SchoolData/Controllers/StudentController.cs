@@ -18,13 +18,13 @@ namespace Gb.Homework.SchoolData.Controllers
         }
 
 
-        public void printAll()
+        public void PrintAll()
         {
-            var users = studentService.getAllUsers();
+            var users = studentService.GetAllUsers();
             view.ShowAll(users);
         }
 
-        public void run()
+        public void Run()
         {
             var isWorking = true;
 
@@ -39,16 +39,16 @@ namespace Gb.Homework.SchoolData.Controllers
                         isWorking = false;
                         break;
                     case 1:
-                        printAll();
+                        PrintAll();
                         break;
                     case 2:
-                        chooseStudent();
+                        ChooseStudent();
                         break;
                     case 3:
-                        addStudent();
+                        AddStudent();
                         break;
                     case 4:
-                        editStudent();
+                        EditStudent();
                         break;
                     case 5:
                         DeleteStudent();
@@ -68,45 +68,44 @@ namespace Gb.Homework.SchoolData.Controllers
                 view.ShowCurrentStudentError();
                 return;
             }
-            studentService.remove(currentStudent);
+            studentService.Remove(currentStudent);
             currentStudent = null;
         }
 
-        private void editStudent()
+        private void EditStudent()
         {
             if (currentStudent == null)
             {
-                view.showCurrentStudentError();
+                view.ShowCurrentStudentError();
                 return;
             }
 
-            var name = view.inputName();
-            var grade = view.inputGrade();
-            var year = view.inputYear();
-            currentStudent.setName(name);
-            currentStudent.setGrade(grade);
-            currentStudent.setYear(year);
-            studentService.edit(currentStudent);
+            var name = view.InputName();
+            var grade = view.InputGrade();
+            var year = view.InputYear();
+            currentStudent.Name = name;
+            currentStudent.Grade = grade;
+            currentStudent.Year = year;
+            studentService.Edit(currentStudent);
         }
 
-        private void addStudent()
+        private void AddStudent()
         {
-            var name = view.inputName();
-            var grade = view.inputGrade();
-            var year = view.inputYear();
+            var name = view.InputName();
+            var grade = view.InputGrade();
+            var year = view.InputYear();
 
-            var nextId = studentService.getNextId();
+            var nextId = studentService.GetNextId();
 
-            studentService.add(new Student(nextId, name, (float)grade, year));
+            studentService.Add(new Student(nextId, name, (float)grade, year));
         }
 
-        private void chooseStudent()
+        private void ChooseStudent()
         {
-            var nextId = studentService.getNextId();
+            var nextId = studentService.GetNextId();
             var teacherId = view.getStudentId(nextId);
 
-            currentStudent = studentService.getAllUsers().stream().filter(x->x.getId() == teacherId)
-                    .findFirst().orElse(null);
+            currentStudent = studentService.GetAllUsers().Where(x => x.Id == teacherId).FirstOrDefault();
         }
     }
 
