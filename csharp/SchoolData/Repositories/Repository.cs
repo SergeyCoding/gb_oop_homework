@@ -10,11 +10,11 @@ namespace Gb.Homework.SchoolData.Repositories
     /// </summary>
     public class Repository<T> : IUserRepository where T : User
     {
-        private static bool isCommitEverytime = true;
-        private string fileDb;
+        private static readonly bool isCommitEverytime = true;
+        private readonly string fileDb;
 
-        private UserFactory<T> userFactory;
-        private Dictionary<int, T> users = new();
+        private readonly UserFactory<T> userFactory;
+        private readonly Dictionary<int, T> users = new();
         private bool isFetch = false;
 
         public Repository(string fileDb, UserFactory<T> userFactory)
@@ -50,46 +50,42 @@ namespace Gb.Homework.SchoolData.Repositories
 
         public void Fetch()
         {
-            //if (isFetch)
-            //    return;
-            //isFetch = true;
+            if (isFetch)
+                return;
+            isFetch = true;
 
-            //try
-            //{
-            //    Path path = Paths.get(fileDb);
-            //    if (Files.exists(path))
-            //    {
-            //        List<String> allLines = Files.readAllLines(path);
+            try
+            {
+                if (File.Exists(fileDb))
+                {
+                    List<String> allLines = File.ReadLines(fileDb).ToList();
 
-            //        for (String line : allLines)
-            //        {
-            //            T user = userFactory.deserialize(line);
-            //            users.put(user.getId(), user);
-            //        }
-            //    }
-            //}
-            //catch (IOException e)
-            //{
-            //    e.printStackTrace();
-            //}
+                    foreach (String line in allLines)
+                    {
+                        T user = userFactory.Deserialize(line);
+                        users[user.Id] = user;
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
         }
 
         public void Commit()
         {
-            //if (!isCommitEverytime)
-            //    return;
+            if (!isCommitEverytime)
+                return;
 
-            //try (FileWriter fileWriter = new FileWriter(fileDb)) {
-            //    for (var u : users.values())
-            //    {
-            //        fileWriter.write(u.serialize());
-            //        fileWriter.write(System.lineSeparator());
-            //        fileWriter.flush();
-            //    }
-            //} catch (Exception ignored)
-            //{
-            //}
+            try
+            {
+                File.WriteAllLines(fileDb, users.Values.Select(x => x.Serialize()));
+            }
+            catch (Exception)
+            {
+            }
         }
 
         void IUserRepository.Remove(User user)
@@ -102,5 +98,4 @@ namespace Gb.Homework.SchoolData.Repositories
             Save((T)user);
         }
     }
-
 }
