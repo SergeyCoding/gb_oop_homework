@@ -17,7 +17,7 @@
 
         public static int GetNaturalInteger(string prompt, Predicate<int> fun, int defaultValue)
         {
-            return GetFromConsole(string.Format("%s [%d] ", prompt, defaultValue), fun, defaultValue);
+            return GetFromConsole($"{prompt} [{defaultValue}] ", fun, defaultValue);
         }
 
         public static int GetInteger(string prompt)

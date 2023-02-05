@@ -19,14 +19,15 @@
 
         public override string Serialize()
         {
-            return string.Format("%s;\t;%d;\t;%b;\t;%s;\t;%g;\t;%d", AppConst.STUDENT, Id, IsActual, Name, Grade, Year);
+            var arr = new[] { AppConst.STUDENT, Id.ToString(), IsActual.ToString(), Name, Grade.ToString(), Year.ToString() };
+            return string.Join(AppConst.DELIMITER, arr);
         }
 
 
 
         public override string? ToString()
         {
-            return string.Format("id=%d name=%s grade=%g year=%d", Id, Name, Grade, Year);
+            return $"id={Id} name={Name} grade={Grade} year={Year}";
         }
 
         public override bool Equals(object? obj)

@@ -14,7 +14,7 @@ namespace Gb.Homework.SchoolData.View
 
             if (currentTeacher != null)
             {
-                Console.WriteLine("Текущий учитель: %s\n", currentTeacher.Name);
+                Console.WriteLine($"Текущий учитель: {currentTeacher.Name}\n");
             }
 
             Console.WriteLine("1. Показать всех учителей");

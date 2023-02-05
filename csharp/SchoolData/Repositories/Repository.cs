@@ -8,7 +8,7 @@ namespace Gb.Homework.SchoolData.Repositories
     /// <summary>
     /// 
     /// </summary>
-    public class Repository<T> where T : User
+    public class Repository<T> : IUserRepository where T : User
     {
         private static bool isCommitEverytime = true;
         private string fileDb;
@@ -46,6 +46,7 @@ namespace Gb.Homework.SchoolData.Repositories
             }
         }
 
+        List<User> IUserRepository.All => throw new NotImplementedException();
 
         public void Fetch()
         {
@@ -89,6 +90,16 @@ namespace Gb.Homework.SchoolData.Repositories
             //} catch (Exception ignored)
             //{
             //}
+        }
+
+        void IUserRepository.Remove(User user)
+        {
+            Remove((T)user);
+        }
+
+        void IUserRepository.Save(User user)
+        {
+            Save((T)user);
         }
     }
 

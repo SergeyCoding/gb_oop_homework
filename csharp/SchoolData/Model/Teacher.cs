@@ -40,7 +40,7 @@
 
         public override string ToString()
         {
-            return string.Format("id=%d name=%s", Id, Name);
+            return $"id={Id} name={Name}";
         }
 
         public void ClearGroup()

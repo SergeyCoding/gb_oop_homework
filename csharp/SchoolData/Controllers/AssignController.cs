@@ -7,18 +7,18 @@ namespace Gb.Homework.SchoolData.Controllers
 
     public class AssignController
     {
-        private UserService<Teacher> teacherService;
-        private UserService<Student> studentService;
-        private AssignView view;
+        private readonly ISchoolUserService<Teacher> teacherService;
+        private readonly ISchoolUserService<Student> studentService;
+        private readonly AssignView view;
 
-        public AssignController(UserService<Teacher> teacherService, UserService<Student> studentService, AssignView assignView)
+        public AssignController(ISchoolUserService<Teacher> teacherService, ISchoolUserService<Student> studentService, AssignView assignView)
         {
             this.teacherService = teacherService;
             this.studentService = studentService;
-            this.view = assignView;
+            view = assignView;
         }
 
-        public void run()
+        public void Run()
         {
             view.ShowTitle();
 
@@ -29,7 +29,12 @@ namespace Gb.Homework.SchoolData.Controllers
 
             Stack<Student> students = new Stack<Student>();
 
-            studentService.GetAllUsers().ForEach(student => { students.Push(student); });
+            foreach (var item in studentService.GetAllUsers())
+            {
+
+                students.Push(item);
+            }
+
 
             while (students.Count > 0)
             {

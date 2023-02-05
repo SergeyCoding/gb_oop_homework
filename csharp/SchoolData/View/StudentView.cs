@@ -14,7 +14,7 @@ namespace Gb.Homework.SchoolData.View
 
             if (currentStudent != null)
             {
-                Console.WriteLine("Текущий студент: %s\n", currentStudent.Name);
+                Console.WriteLine($"Текущий студент: {currentStudent.Name}\n");
             }
 
             Console.WriteLine("1. Показать всех студентов");

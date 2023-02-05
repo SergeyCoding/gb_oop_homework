@@ -8,7 +8,7 @@ namespace Gb.Homework.SchoolData.View
     {
         public void ShowTeacher(Teacher teacher)
         {
-            Console.WriteLine("\nУчитель - %d %s\n", teacher.Id, teacher.Name);
+            Console.WriteLine($"\nУчитель - {teacher.Id} {teacher.Name}");
 
             List<Student> group = teacher.getGroup();
 
@@ -19,7 +19,7 @@ namespace Gb.Homework.SchoolData.View
 
             foreach (Student student in group)
             {
-                Console.WriteLine("\t%d %s |", student.Id, student.Name);
+                Console.Write($"\t{student.Id} {student.Name} |");
             }
             Console.WriteLine();
         }

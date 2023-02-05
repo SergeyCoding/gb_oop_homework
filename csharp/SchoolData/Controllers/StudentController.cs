@@ -7,11 +7,11 @@ namespace Gb.Homework.SchoolData.Controllers
 
     public class StudentController
     {
-        private UserService<Student> studentService;
+        private ISchoolUserService<Student> studentService;
         private StudentView view;
         public Student? currentStudent;
 
-        public StudentController(UserService<Student> service, StudentView view)
+        public StudentController(ISchoolUserService<Student> service, StudentView view)
         {
             this.studentService = service;
             this.view = view;

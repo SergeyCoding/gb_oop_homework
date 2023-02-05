@@ -4,7 +4,7 @@ using Gb.Homework.SchoolData.Repositories;
 namespace Gb.Homework.SchoolData.Service.Impls
 {
 
-    public class UserServiceImpl<T> : UserService<T> where T : User
+    public class UserServiceImpl<T> : ISchoolUserService<T> where T : User
     {
         protected Repository<T> repository;
 
@@ -40,9 +40,24 @@ namespace Gb.Homework.SchoolData.Service.Impls
             return last != null ? last.Id + 1 : 0;
         }
 
-        public static implicit operator UserServiceImpl<User>(UserServiceImpl<T> t)
+        List<User> IUserService.GetAllUsers()
         {
-            return new UserServiceImpl<User> { t };
+            return GetAllUsers().Cast<User>().ToList();
+        }
+
+        void IUserService.Add(User user)
+        {
+            Add((T)user);
+        }
+
+        void IUserService.Edit(User user)
+        {
+            Edit((T)user);
+        }
+
+        void IUserService.Remove(User user)
+        {
+            Remove((T)user);
         }
     }
 

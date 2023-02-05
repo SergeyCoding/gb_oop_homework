@@ -8,13 +8,13 @@ namespace Gb.Homework.SchoolData.Controllers
 
     public class TeacherController
     {
-        private readonly UserService<Teacher> teacherService;
+        private readonly ISchoolUserService<Teacher> teacherService;
         private readonly TeacherView view;
         public Teacher? currentTeacher;
 
-        public TeacherController(UserService<Teacher> service, TeacherView view)
+        public TeacherController(ISchoolUserService<Teacher> service, TeacherView view)
         {
-            this.teacherService = service;
+            teacherService = service;
             this.view = view;
         }
 
@@ -30,7 +30,7 @@ namespace Gb.Homework.SchoolData.Controllers
             return currentTeacher;
         }
 
-        public void Run(Teacher? currentTeacher)
+        public void Run()
         {
             var isWorking = true;
 
